@@ -9,6 +9,8 @@
 
 # Problem List
 
-- __Day01_Trebuchet:__ Calibration numbvaluesers have been incorrectly stored for targeting the trebuchet. On each line, the calibration value can be found by combining the first digit and the last digit (in that order) of the characters to form a single two-digit number. 
+- __Day01_Trebuchet:__ Calibration number values have been incorrectly stored for targeting the trebuchet. On each line, the calibration value can be found by combining the first digit and the last digit (in that order) of the characters to form a single two-digit number. 
 
 Consider your entire calibration document. What is the sum of all of the calibration values?
+
+- __Day02_NumericalWords:__ A further error was found in the calibration document. Some of the values were written in words rather than numbers. Update the code as to correctly calculate the sum of all of the calibration values.
