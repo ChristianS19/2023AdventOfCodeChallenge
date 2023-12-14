@@ -40,7 +40,48 @@ def colouredCubes(input):
     
     return sum_possible
 
-print(f'The sum of the GameIDs that are possible is: {colouredCubes('Day02_InputData.txt')}')
+# print(f'The sum of the GameIDs that are possible is: {colouredCubes('Day02_InputData.txt')}')
 
 
 # Day 02_Part 2_Fewest Numbers of Cubes
+""" 
+What are the fewest number of Cubes in a bag that would make the game possible?
+Return the sum of the power of the sets?
+"""
+def colouredCubesCubed(input):
+    """
+    Determines the minimum number of cubes in a bag that would make each game possible, then multiplies the number of 
+    each coloured cubes by one another to produce a game "power". The sum of the power of each game is then returned.
+
+    Input: str, A text file containing a string list of games.
+
+    Output: int, The sum of the maximum coloured cubes cubed.
+    """
+
+    sum_powers = 0
+    
+    with open(input, 'r') as file:
+        for line in file:
+            max_cubes = {'red': 0, 'green': 0, 'blue': 0}                               # Minium cubes required for draw
+            segments = line.strip().split(' ')[2:]                                      # Extracting draw segments
+            segments = [char.replace(',', '').replace(';', '') for char in segments]    # Clean string of punctuation
+
+            for i in range(0, len(segments), 2):
+                color, number = segments[i+1], int(segments[i])
+                if color in max_cubes and number > max_cubes[color]:
+                    max_cubes[color] = number
+            
+            game_power = 1
+            for key in max_cubes:
+                game_power *= max_cubes[key]
+
+            sum_powers += game_power
+
+            # Uncomment the below lines if needed for debugging or output display
+            # print(f'Minimum Num of Cubes: {max_cubes}')
+            # print(f'GameID: {line.split()[1][:-1]}, Current Total: {sum_powers}')
+            # print()
+
+    return sum_powers
+
+print(f'The sum of the maximum coloured cubes cubed is: {colouredCubesCubed('Day02_InputData.txt')}')
